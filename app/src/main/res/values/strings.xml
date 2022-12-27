@@ -4,4 +4,9 @@
     <string name="text_welcome_2">End-to-end secured messaging app with Social Elements</string>
     <string name="btn_text_sign_up">Sign Up</string>
     <string name="btn_text_login">Login</string>
+    <string name="text_welcome">Welcome !</string>
+    <string name="text_login_to_continue">Login to continue</string>
+    <string name="text_enter_phone_numb">Enter Your Phone Number</string>
+    <string name="label_enter_password">Enter Your Password</string>
+    <string name="label_forget_password">Forgot Password?</string>
 </resources>
