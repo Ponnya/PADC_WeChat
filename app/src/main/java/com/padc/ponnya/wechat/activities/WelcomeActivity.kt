@@ -21,12 +21,22 @@ class WelcomeActivity : BasicAbstractActivity(), WelcomeView {
     }
 
     private fun setUpListeners() {
+        //Login
         binding.btnWelcomeLogin.setOnClickListener {
             mPresenter.onTapLogin()
+        }
+
+        //SignUp
+        binding.btnSignUp.setOnClickListener {
+            mPresenter.onTapSignUp()
         }
     }
 
     override fun navigateToLogin() {
         startActivity(LoginActivity.newIntent(this))
+    }
+
+    override fun nvigateToVerify() {
+        startActivity(VerifyActivity.newIntent(this))
     }
 }

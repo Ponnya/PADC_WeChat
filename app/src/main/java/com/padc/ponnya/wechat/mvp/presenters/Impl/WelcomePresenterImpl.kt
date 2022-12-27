@@ -10,6 +10,10 @@ class WelcomePresenterImpl : AbstractBasePresenter<WelcomeView>(), WelcomePresen
         mView.navigateToLogin()
     }
 
+    override fun onTapSignUp() {
+        mView.nvigateToVerify()
+    }
+
     override fun onUiReady(owner: LifecycleOwner) {
 
     }

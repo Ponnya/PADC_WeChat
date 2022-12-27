@@ -7,32 +7,28 @@
     tools:context=".activities.LoginActivity">
 
     <ImageButton
-        android:id="@+id/btnBack"
+        android:id="@+id/btnBackLogin"
         android:layout_width="@dimen/margin_large"
         android:layout_height="@dimen/margin_large"
-        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginStart="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_medium_2"
         android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/ic_baseline_arrow_blue_24dp" />
 
     <TextView
         android:id="@+id/tvLoginWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_xxlarge"
+        android:layout_marginStart="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_xlarge"
         android:text="@string/text_welcome"
         android:textColor="@color/colorSecondaryLight"
         android:textSize="@dimen/text_heading_2x"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBack" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBackLogin" />
 
     <TextView
         android:id="@+id/tvLoignToContinue"
@@ -62,8 +58,8 @@
         android:id="@+id/textInputLayoutLoginPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_xxlarge"
-        android:layout_marginEnd="@dimen/margin_xxlarge"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"
         android:hint="@string/text_enter_phone_numb"
         app:boxBackgroundColor="@null"
         app:boxStrokeColor="@color/colorSecondaryLight"

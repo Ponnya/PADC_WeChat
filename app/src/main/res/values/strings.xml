@@ -9,4 +9,10 @@
     <string name="text_enter_phone_numb">Enter Your Phone Number</string>
     <string name="label_enter_password">Enter Your Password</string>
     <string name="label_forget_password">Forgot Password?</string>
+    <string name="text_verifty_hi">Hi !</string>
+    <string name="text_create_a_new_account">Create a new account</string>
+    <string name="text_get_otp">Get OTP</string>
+    <string name="text_dont_receive">Dont receive the OTP?&#160;</string>
+    <string name="text_resend_code">Resend Code</string>
+    <string name="lbl_btn_verify">Verify</string>
 </resources>

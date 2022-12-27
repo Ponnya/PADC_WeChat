@@ -32,4 +32,5 @@
     <dimen name="text_regular_2xx">18sp</dimen>
     <dimen name="width_login_image">200dp</dimen>
     <dimen name="height_login_image">195dp</dimen>
+    <dimen name="width_height_otp_btn">48dp</dimen>
 </resources>
