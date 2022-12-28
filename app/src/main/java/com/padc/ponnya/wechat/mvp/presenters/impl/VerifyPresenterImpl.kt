@@ -10,6 +10,10 @@ class VerifyPresenterImpl : AbstractBasePresenter<VerifyView>(), VerifyPresenter
         mView.navigateToSignUp()
     }
 
+    override fun onTapBack() {
+        mView.navigateToWelcomeScreen()
+    }
+
     override fun onUiReady(owner: LifecycleOwner) {
 
     }

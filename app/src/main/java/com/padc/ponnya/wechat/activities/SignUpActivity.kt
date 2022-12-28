@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.padc.ponnya.wechat.databinding.ActivitySignUpBinding
+import com.padc.ponnya.wechat.mvp.presenters.SignUpPresenter
+import com.padc.ponnya.wechat.mvp.presenters.impl.SignUpPresenterImpl
+import com.padc.ponnya.wechat.mvp.views.SignUpView
 import com.padc.ponnya.wechat.utils.MONTHS
 import java.util.*
 
-class SignUpActivity : BaseAbstractActivity() {
+class SignUpActivity : BaseAbstractActivity(), SignUpView {
     private lateinit var binding: ActivitySignUpBinding
+    private lateinit var mPresenter: SignUpPresenter
     private var selectedYear: Int = 1900
     private var selectedMonth: Int = 0
 
@@ -22,24 +26,24 @@ class SignUpActivity : BaseAbstractActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mPresenter = getPresenter<SignUpPresenterImpl, SignUpView>()
 
+        setUpListener()
         setUpDropDown()
+
+        mPresenter.onUiReady(this)
+    }
+
+    private fun setUpListener() {
+        binding.btnBackSignUp.setOnClickListener {
+            mPresenter.onTapBack()
+        }
     }
 
     private fun setUpDropDown() {
-        /*val adapter = ArrayAdapter(
-            this, android.R.layout.simple_spinner_dropdown_item, arrayListOf("All Types", "Assignments", "Exam", "Lab")
-        )
-        binding.autoCompleteTextViewDay.setAdapter(adapter)
-
-        binding.autoCompleteTextViewDay.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id->
-                // do something with the available information
-            }*/
         setUpDay()
         setUpMonth()
         setUpYear()
-
     }
 
     private fun setUpYear() {
@@ -82,5 +86,9 @@ class SignUpActivity : BaseAbstractActivity() {
         )
         binding.autoCompleteTextViewDay.setAdapter(dayAdapter)
         binding.autoCompleteTextViewDay.text = null
+    }
+
+    override fun navigateToVerifyScreen() {
+        finish()
     }
 }

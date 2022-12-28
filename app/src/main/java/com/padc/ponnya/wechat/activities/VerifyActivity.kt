@@ -46,13 +46,23 @@ class VerifyActivity : BaseAbstractActivity(), VerifyView {
     }
 
     private fun setUpListener() {
+        //VerifyBtn
         binding.btnVerify.setOnClickListener {
             mPresenter.onTapVerify()
+        }
+
+        //BackBtn
+        binding.btnBackVerify.setOnClickListener {
+            mPresenter.onTapBack()
         }
     }
 
     override fun navigateToSignUp() {
         startActivity(SignUpActivity.newIntent(this))
+    }
+
+    override fun navigateToWelcomeScreen() {
+        finish()
     }
 }
 

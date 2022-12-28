@@ -4,4 +4,5 @@ import com.padc.ponnya.wechat.mvp.views.VerifyView
 
 interface VerifyPresenter : BasePresenter<VerifyView> {
     fun onTapVerify()
+    fun onTapBack()
 }
