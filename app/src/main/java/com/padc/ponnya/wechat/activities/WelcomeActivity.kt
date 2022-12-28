@@ -2,11 +2,11 @@ package com.padc.ponnya.wechat.activities
 
 import android.os.Bundle
 import com.padc.ponnya.wechat.databinding.ActivityWelcomeBinding
-import com.padc.ponnya.wechat.mvp.presenters.Impl.WelcomePresenterImpl
 import com.padc.ponnya.wechat.mvp.presenters.WelcomePresenter
+import com.padc.ponnya.wechat.mvp.presenters.impl.WelcomePresenterImpl
 import com.padc.ponnya.wechat.mvp.views.WelcomeView
 
-class WelcomeActivity : BasicAbstractActivity(), WelcomeView {
+class WelcomeActivity : BaseAbstractActivity(), WelcomeView {
     private lateinit var binding: ActivityWelcomeBinding
     private lateinit var mPresenter: WelcomePresenter
 

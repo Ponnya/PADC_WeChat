@@ -1,4 +1,4 @@
-package com.padc.ponnya.wechat.mvp.presenters.Impl
+package com.padc.ponnya.wechat.mvp.presenters.impl
 
 import androidx.lifecycle.LifecycleOwner
 import com.padc.ponnya.wechat.mvp.presenters.AbstractBasePresenter

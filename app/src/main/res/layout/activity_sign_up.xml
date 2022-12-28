@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SignUpActivity">
+
+    <ImageButton
+        android:id="@+id/btnBackSignUp"
+        android:layout_width="@dimen/margin_large"
+        android:layout_height="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_blue_24dp" />
+
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:text="@string/text_verifty_hi"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_heading_2x"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBackSignUp" />
+
+    <TextView
+        android:id="@+id/tvCreateANewAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/text_create_a_new_account"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_regular_2x"
+        app:layout_constraintStart_toStartOf="@+id/tvSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="@dimen/width_image_circle"
+        android:layout_height="@dimen/height_image_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBackSignUp"
+        app:srcCompat="@drawable/sign_up" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:hint="@string/lbl_name"
+        app:boxBackgroundColor="@null"
+        app:boxStrokeColor="@color/colorSecondaryLight"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSecondaryLight"
+            android:textSize="@dimen/text_regular_2x" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvDateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/lbl_date_of_birth"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutName"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutDay"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="@dimen/width_auto_complete_text_view_day"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:hint="@string/lbl_day"
+        app:boxStrokeColor="?attr/colorButtonNormal"
+        app:boxStrokeWidth="0dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_blue_24dp"
+        app:endIconTint="@color/colorSecondaryLight"
+        app:hintTextColor="@color/colorSecondaryLight"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutMonth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateOfBirth">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewDay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_shadow"
+            android:inputType="none"
+            android:textColor="@color/colorSecondary"
+            tools:text="Day" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutMonth"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="@dimen/width_auto_complete_text_view_month"
+        android:layout_height="wrap_content"
+        android:hint="@string/lbl_month"
+        app:boxStrokeColor="?attr/colorButtonNormal"
+        app:boxStrokeWidth="0dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_blue_24dp"
+        app:endIconTint="@color/colorSecondaryLight"
+        app:hintTextColor="@color/colorSecondaryLight"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutDay"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutYear"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayoutDay"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayoutDay">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewMonth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_shadow"
+            android:inputType="none"
+            android:textColor="@color/colorSecondary"
+            tools:text="Month" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutYear"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="@dimen/width_auto_complete_text_view_year"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:hint="@string/lbl_year"
+        app:boxStrokeColor="?attr/colorButtonNormal"
+        app:boxStrokeWidth="0dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_blue_24dp"
+        app:endIconTint="@color/colorSecondaryLight"
+        app:hintTextColor="@color/colorSecondaryLight"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutMonth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayoutMonth"
+        app:layout_constraintTop_toTopOf="@+id/textInputLayoutMonth">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteTextViewYear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edittext_shadow"
+            android:inputType="none"
+            android:textColor="@color/colorSecondary"
+            tools:text="Year" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGender">
+
+        <RadioButton
+            android:id="@+id/radioBtnMale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorSecondary"
+            android:text="@string/lbl_male"
+            android:textColor="@color/colorSecondary" />
+
+        <RadioButton
+            android:id="@+id/radioBtnFemale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorSecondary"
+            android:text="@string/lbl_female"
+            android:textColor="@color/colorSecondary" />
+
+        <RadioButton
+            android:id="@+id/radioBtnOther"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorSecondary"
+            android:text="@string/lbl_other"
+            android:textColor="@color/colorSecondary" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:text="@string/lbl_gender"
+        app:layout_constraintStart_toStartOf="@+id/tvDateOfBirth"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDay" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutSignUpPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:hint="@string/lbl_password"
+        app:boxBackgroundColor="@null"
+        app:boxStrokeColor="@color/colorSecondaryLight"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSecondaryLight"
+            android:textSize="@dimen/text_regular_2x" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkBoxTermAndService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:buttonTint="@color/colorSecondary"
+        android:text="@string/lbl_term_and_service"
+        android:textColor="@color/colorSecondary"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayoutSignUpPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSignUpPassword" />
+
+    <Button
+        android:id="@+id/btnSignUp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_xxlarge"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="@string/btn_text_sign_up"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxTermAndService" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.padc.ponnya.wechat.databinding.ActivityLoginBinding
 
-class LoginActivity : BasicAbstractActivity() {
+class LoginActivity : BaseAbstractActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     companion object {
