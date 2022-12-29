@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuItemMoment"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_camera_gray_24dp"
+        android:title="@string/lbl_moment"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menuItemChat"
+        android:enabled="true"
+        android:icon="@drawable/ic_chat_gray_24dp"
+        android:title="@string/lbl_chat"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menuItemContact"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_perm_contact_calendar_gray_24dp"
+        android:title="@string/lbl_contacts"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menuItemMe"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_account_circle_gray_24dp"
+        android:title="@string/lbl_me"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menuItemSetting"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_menu_gray_24dp"
+        android:title="@string/lbl_setting"
+        app:showAsAction="ifRoom|withText" />
+</menu>

@@ -54,7 +54,7 @@ class SignUpActivity : BaseAbstractActivity(), SignUpView {
         )
         binding.autoCompleteTextViewYear.setAdapter(yearAdapter)
         binding.autoCompleteTextViewYear.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
+            AdapterView.OnItemClickListener { _, _, _, _ ->
                 selectedYear = binding.autoCompleteTextViewYear.text.toString().toInt()
                 binding.autoCompleteTextViewMonth.text = null
                 setUpDay()
@@ -67,7 +67,7 @@ class SignUpActivity : BaseAbstractActivity(), SignUpView {
         )
         binding.autoCompleteTextViewMonth.setAdapter(monthAdapter)
         binding.autoCompleteTextViewMonth.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
+            AdapterView.OnItemClickListener { _, _, _, _ ->
                 selectedMonth = MONTHS.indexOf(binding.autoCompleteTextViewMonth.text.toString())
                 setUpDay()
             }

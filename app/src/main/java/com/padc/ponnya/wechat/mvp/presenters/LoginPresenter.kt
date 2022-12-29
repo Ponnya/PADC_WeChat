@@ -4,4 +4,5 @@ import com.padc.ponnya.wechat.mvp.views.LoginView
 
 interface LoginPresenter : BasePresenter<LoginView> {
     fun onTapBack()
+    fun onTapLoginBtn()
 }

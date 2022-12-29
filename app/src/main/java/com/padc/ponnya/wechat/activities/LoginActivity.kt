@@ -27,12 +27,22 @@ class LoginActivity : BaseAbstractActivity(), LoginView {
     }
 
     private fun setUpListener() {
+        //back btn
         binding.btnBackLogin.setOnClickListener {
             mPresenter.onTapBack()
+        }
+
+        //login btn
+        binding.btnLogin.setOnClickListener {
+            mPresenter.onTapLoginBtn()
         }
     }
 
     override fun navigateToWelcome() {
         finish()
+    }
+
+    override fun navigateToHomeScreen() {
+        startActivity(HomeActivity.newIntent(this))
     }
 }

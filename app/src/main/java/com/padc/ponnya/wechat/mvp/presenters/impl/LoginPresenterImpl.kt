@@ -10,6 +10,10 @@ class LoginPresenterImpl : AbstractBasePresenter<LoginView>(), LoginPresenter {
         mView.navigateToWelcome()
     }
 
+    override fun onTapLoginBtn() {
+        mView.navigateToHomeScreen()
+    }
+
     override fun onUiReady(owner: LifecycleOwner) {
 
     }

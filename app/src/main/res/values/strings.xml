@@ -26,4 +26,10 @@
     <string name="lbl_gender">Gender</string>
     <string name="lbl_password">Password</string>
     <string name="lbl_term_and_service">Agree To Term And Service</string>
+    <string name="lbl_moment">Moment</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_chat">Chat</string>
+    <string name="lbl_contacts">Contacts</string>
+    <string name="lbl_me">Me</string>
+    <string name="lbl_setting">Setting</string>
 </resources>

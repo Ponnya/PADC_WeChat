@@ -6,3 +6,4 @@ val MONTHS = arrayListOf(
     "Oct", "Nov", "Dec"
 )
 
+const val TITLE_MOMENT = "Moment"
