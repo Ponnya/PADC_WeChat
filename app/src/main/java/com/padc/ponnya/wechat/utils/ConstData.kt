@@ -7,3 +7,6 @@ val MONTHS = arrayListOf(
 )
 
 const val TITLE_MOMENT = "Moment"
+const val TITLE_CHAT = "Chat"
+const val TITLE_CONTACTS = "Contacts"
+const val TITLE_ME = "Me"

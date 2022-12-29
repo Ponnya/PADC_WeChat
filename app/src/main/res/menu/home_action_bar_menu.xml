@@ -14,5 +14,16 @@
         android:title="@string/lbl_search"
         android:visible="false"
         app:showAsAction="ifRoom" />
-
+    <item
+        android:id="@+id/menuItemContactAdd"
+        android:icon="@drawable/ic_baseline_person_add_alt_1_blue_24dp"
+        android:title="@string/lbl_contacts"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menuItemEdit"
+        android:icon="@drawable/ic_baseline_edit_blue_24dp"
+        android:title="@string/lbl_edit"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
 </menu>
