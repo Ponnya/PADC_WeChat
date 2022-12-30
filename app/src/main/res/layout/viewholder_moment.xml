@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/margin_medium_2"
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -56,5 +57,61 @@
         android:layout_below="@id/tvMomentText"
         android:layout_marginTop="@dimen/margin_medium" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnLove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvMomentImage"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/ic_baseline_favorite_border_blue_24dp" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLoveCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvMomentImage"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_toEndOf="@id/btnLove"
+        android:text="2"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvMomentImage"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_toStartOf="@id/tvCommentCount"
+        android:src="@drawable/ic_baseline_comment_blue_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCommentCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvMomentImage"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_toStartOf="@id/btnShare"
+        android:text="2"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvMomentImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/ic_baseline_bookmark_border_blue_24dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/btnLove"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@color/colorSecondaryLight" />
 </RelativeLayout>
