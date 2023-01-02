@@ -35,4 +35,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lbl_edit">Edit</string>
+    <string name="lbl_new_moment">New Moment</string>
+    <string name="lbl_create">Create</string>
+    <string name="hint_moment_content">What\'s on your mind</string>
 </resources>

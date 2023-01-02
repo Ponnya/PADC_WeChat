@@ -1,10 +1,12 @@
 package com.padc.ponnya.wechat.activities
 
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -14,15 +16,20 @@ import com.padc.ponnya.wechat.fragments.ChatFragment
 import com.padc.ponnya.wechat.fragments.ContactsFragment
 import com.padc.ponnya.wechat.fragments.MeFragment
 import com.padc.ponnya.wechat.fragments.MomentFragment
+import com.padc.ponnya.wechat.mvp.presenters.HomePresenter
+import com.padc.ponnya.wechat.mvp.presenters.impl.HomePresenterImpl
+import com.padc.ponnya.wechat.mvp.views.HomeView
 import com.padc.ponnya.wechat.utils.TITLE_CHAT
 import com.padc.ponnya.wechat.utils.TITLE_CONTACTS
 import com.padc.ponnya.wechat.utils.TITLE_ME
 import com.padc.ponnya.wechat.utils.TITLE_MOMENT
 
 
-class HomeActivity : BaseAbstractActivity() {
+class HomeActivity : BaseAbstractActivity(), HomeView {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var mMenu: Menu
+
+    private lateinit var mPresenter: HomePresenter
 
     companion object {
         fun newIntent(context: Context) = Intent(context, HomeActivity::class.java)
@@ -32,11 +39,12 @@ class HomeActivity : BaseAbstractActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mPresenter = getPresenter<HomePresenterImpl, HomeView>()
         setUpActionBar()
         setUpFragment()
         setUpBottomAppBarListener()
-        println("onCreate")
-
+        setUpListener()
+        mPresenter.onUiReady(this)
     }
 
     private fun setUpActionBar() {
@@ -97,6 +105,13 @@ class HomeActivity : BaseAbstractActivity() {
         }
     }
 
+    private fun setUpListener() {
+        mMenu.findItem(R.id.menuItemAdd).setOnMenuItemClickListener {
+            mPresenter.onTapAddNewMoment()
+        }
+
+    }
+
     private fun setUpMenuVisibility(
         addVisible: Boolean = false,
         searchVisible: Boolean = false,
@@ -111,5 +126,16 @@ class HomeActivity : BaseAbstractActivity() {
         }
     }
 
+    private val resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+
+            }
+        }
+
+    override fun openNewMomentScreen(): Boolean {
+        resultLauncher.launch(NewMomentActivity.newIntent(this))
+        return true
+    }
 
 }

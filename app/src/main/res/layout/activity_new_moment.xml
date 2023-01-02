@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NewMomentActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tvNewMoment"
+        android:layout_alignBottom="@id/tvNewMoment"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:src="@drawable/ic_baseline_close_blue_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNewMoment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/btnCreateMoment"
+        android:layout_alignBottom="@id/btnCreateMoment"
+        android:layout_toStartOf="@id/btnCreateMoment"
+        android:layout_toEndOf="@id/btnClose"
+        android:gravity="center"
+        android:text="@string/lbl_new_moment"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_regular_2xx"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCreateMoment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="@string/lbl_create"
+        android:textAllCaps="false" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="@dimen/margin_xxlarge"
+        android:layout_height="@dimen/margin_xxlarge"
+        android:layout_below="@id/btnClose"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/moment_testing_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnClose"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_toEndOf="@id/ivProfile"
+        android:text="Kitty"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edtMomentContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivProfile"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:background="@null"
+        android:hint="@string/hint_moment_content"
+        android:inputType="textMultiLine"
+        android:textSize="@dimen/text_regular_2xx" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSelectedImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium_2" />
+
+
+</RelativeLayout>
