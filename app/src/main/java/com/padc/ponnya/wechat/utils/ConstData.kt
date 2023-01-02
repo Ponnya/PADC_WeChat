@@ -8,9 +8,9 @@ val MONTHS = arrayListOf(
 
 const val OTP = "2240"
 
-const val GENDER_KEY_MALE = 1
-const val GENDER_KEY_FEMALE = 2
-const val GENDER_KEY_OTHER = 3
+const val GENDER_KEY_MALE = 0L
+const val GENDER_KEY_FEMALE = 1L
+const val GENDER_KEY_OTHER = 2L
 
 const val GENDER_VALUE_MALE = "Male"
 const val GENDER_VALUE_FEMALE = "Female"
@@ -38,3 +38,11 @@ const val FIELD_PASSWORD = "Password"
 
 const val ERROR_CHECK_INTERNET = "Please check internet connection"
 const val ERROR_INVALID_OTP = "OTP is invalid"
+const val ERROR_INVALID_PHONE = "Phone is invalid"
+const val ERROR_INVALID_NAME = "Please enter name"
+const val ERROR_INVALID_DAY = "Please choose day"
+const val ERROR_INVALID_MONTH = "Please choose month"
+const val ERROR_INVALID_YEAR = "Please choose year"
+const val ERROR_INVALID_GENDER = "Please choose gender"
+const val ERROR_INVALID_PASSWORD = "Please enter password"
+const val ERROR_INVALID_TERM_AND_SERVICE = "Please agree to term and service"

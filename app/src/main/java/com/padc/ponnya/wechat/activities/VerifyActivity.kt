@@ -1,5 +1,6 @@
 package com.padc.ponnya.wechat.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -48,7 +49,12 @@ class VerifyActivity : BaseAbstractActivity(), VerifyView {
     private fun setUpListener() {
         //VerifyBtn
         binding.btnVerify.setOnClickListener {
-            mPresenter.onTapVerify()
+            val otp = StringBuffer()
+                .append(binding.edtOTP1.text)
+                .append(binding.edtOTP2.text)
+                .append(binding.edtOTP3.text)
+                .append(binding.edtOTP4.text)
+            mPresenter.onTapVerify(binding.edtVerifyPhone.text.toString(), String(otp))
         }
 
         //BackBtn
@@ -57,12 +63,17 @@ class VerifyActivity : BaseAbstractActivity(), VerifyView {
         }
     }
 
-    override fun navigateToSignUp() {
-        startActivity(SignUpActivity.newIntent(this))
+    override fun navigateToSignUp(phone: String) {
+        startActivity(SignUpActivity.newIntent(this, phone))
     }
 
     override fun navigateToWelcomeScreen() {
         finish()
+    }
+
+    @SuppressLint("StringFormatInvalid")
+    override fun showPhoneError(error: String) {
+        binding.edtVerifyPhone.error = error
     }
 }
 

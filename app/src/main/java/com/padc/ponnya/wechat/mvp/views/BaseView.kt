@@ -1,3 +1,5 @@
 package com.padc.ponnya.wechat.mvp.views
 
-interface BaseView
+interface BaseView {
+    fun showError(error: String)
+}

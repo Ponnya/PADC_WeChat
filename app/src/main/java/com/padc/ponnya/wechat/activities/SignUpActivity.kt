@@ -9,17 +9,24 @@ import com.padc.ponnya.wechat.databinding.ActivitySignUpBinding
 import com.padc.ponnya.wechat.mvp.presenters.SignUpPresenter
 import com.padc.ponnya.wechat.mvp.presenters.impl.SignUpPresenterImpl
 import com.padc.ponnya.wechat.mvp.views.SignUpView
+import com.padc.ponnya.wechat.utils.GENDER_KEY_FEMALE
+import com.padc.ponnya.wechat.utils.GENDER_KEY_MALE
+import com.padc.ponnya.wechat.utils.GENDER_KEY_OTHER
 import com.padc.ponnya.wechat.utils.MONTHS
 import java.util.*
 
 class SignUpActivity : BaseAbstractActivity(), SignUpView {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var mPresenter: SignUpPresenter
+    private lateinit var mPhone: String
+    private var mGender = -1L
     private var selectedYear: Int = 1900
     private var selectedMonth: Int = 0
 
     companion object {
-        fun newIntent(context: Context) = Intent(context, SignUpActivity::class.java)
+        private const val EXTRA_PHONE = "EXTRA_PHONE"
+        fun newIntent(context: Context, phone: String) = Intent(context, SignUpActivity::class.java)
+            .putExtra(EXTRA_PHONE, phone)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +34,7 @@ class SignUpActivity : BaseAbstractActivity(), SignUpView {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mPresenter = getPresenter<SignUpPresenterImpl, SignUpView>()
-
+        mPhone = intent.getStringExtra(EXTRA_PHONE) ?: ""
         setUpListener()
         setUpDropDown()
 
@@ -37,6 +44,35 @@ class SignUpActivity : BaseAbstractActivity(), SignUpView {
     private fun setUpListener() {
         binding.btnBackSignUp.setOnClickListener {
             mPresenter.onTapBack()
+        }
+
+        with(binding) {
+            btnSignUp2.setOnClickListener {
+                mPresenter.onTapSignUp(
+                    phone = mPhone,
+                    name = edtName.text.toString(),
+                    day = autoCompleteTextViewDay.text.toString(),
+                    month = autoCompleteTextViewMonth.text.toString(),
+                    year = autoCompleteTextViewYear.text.toString(),
+                    gender = mGender,
+                    password = edtSignUpPassword.text.toString(),
+                    termAndService = checkBoxTermAndService.isChecked
+                )
+            }
+        }
+
+        binding.radioGroupGender.setOnCheckedChangeListener { _, i ->
+            when (i) {
+                binding.radioBtnMale.id -> {
+                    mGender = GENDER_KEY_MALE
+                }
+                binding.radioBtnFemale.id -> {
+                    mGender = GENDER_KEY_FEMALE
+                }
+                binding.radioBtnOther.id -> {
+                    mGender = GENDER_KEY_OTHER
+                }
+            }
         }
     }
 
@@ -87,6 +123,36 @@ class SignUpActivity : BaseAbstractActivity(), SignUpView {
         binding.autoCompleteTextViewDay.setAdapter(dayAdapter)
         binding.autoCompleteTextViewDay.text = null
     }
+
+    override fun navigateToHomeScreen() {
+        startActivity(HomeActivity.newIntent(this))
+        finish()
+    }
+
+    override fun showNameError(error: String) {
+        binding.edtName.error = error
+    }
+
+    override fun showDayError(error: String) {
+        binding.autoCompleteTextViewDay.error = error
+    }
+
+    override fun showMonthError(error: String) {
+        binding.autoCompleteTextViewMonth.error = error
+    }
+
+    override fun showYearError(error: String) {
+        binding.autoCompleteTextViewYear.error = error
+    }
+
+    override fun showPasswordError(error: String) {
+        binding.edtSignUpPassword.error = error
+    }
+
+    override fun showTermAndServiceError(error: String) {
+        binding.checkBoxTermAndService.error = error
+    }
+
 
     override fun navigateToVerifyScreen() {
         finish()
