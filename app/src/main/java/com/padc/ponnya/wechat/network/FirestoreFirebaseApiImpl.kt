@@ -9,6 +9,15 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
+        database.collection(COLLECTION_ACCOUNT)
+            .whereEqualTo(FIELD_PHONE, phone)
+            .whereEqualTo(FIELD_PASSWORD, password)
+            .get()
+            .addOnSuccessListener {
+                if (it.documents.isNotEmpty()) onSuccess()
+                else onFailure(ERROR_INVALID_PHONE_NUMBER_AND_PASSWORD)
+            }
+            .addOnFailureListener { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) }
     }
 
     override fun register(

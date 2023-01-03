@@ -7,6 +7,8 @@ interface WeChatModel {
     val mFirebaseApi: FirebaseApi
         get() = FirestoreFirebaseApiImpl
 
+    fun login(phone: String, password: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
+
     fun register(
         phone: String,
         name: String,

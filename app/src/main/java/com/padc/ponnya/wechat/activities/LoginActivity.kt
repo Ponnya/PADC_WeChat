@@ -34,7 +34,10 @@ class LoginActivity : BaseAbstractActivity(), LoginView {
 
         //login btn
         binding.btnLogin.setOnClickListener {
-            mPresenter.onTapLoginBtn()
+            mPresenter.onTapLoginBtn(
+                phone = binding.edtLoginPhone.text.toString(),
+                password = binding.edtLoginPassword.text.toString()
+            )
         }
     }
 
@@ -44,5 +47,14 @@ class LoginActivity : BaseAbstractActivity(), LoginView {
 
     override fun navigateToHomeScreen() {
         startActivity(HomeActivity.newIntent(this))
+        finish()
+    }
+
+    override fun showPhoneError(error: String) {
+        binding.edtLoginPhone.error = error
+    }
+
+    override fun showPasswordError(error: String) {
+        binding.edtLoginPassword.error = error
     }
 }
