@@ -8,6 +8,8 @@ val MONTHS = arrayListOf(
 
 const val OTP = "2240"
 
+const val INTENT_TYPE_IMAGE = "image/*"
+
 const val GENDER_KEY_MALE = 0L
 const val GENDER_KEY_FEMALE = 1L
 const val GENDER_KEY_OTHER = 2L
@@ -30,11 +32,19 @@ const val TITLE_CONTACTS = "Contacts"
 const val TITLE_ME = "Me"
 
 const val COLLECTION_ACCOUNT = "Account"
+const val COLLECTION_MOMENT = "Moment"
+
 const val FIELD_NAME = "Name"
 const val FIELD_PHONE = "Phone"
 const val FIELD_DOB = "DOB"
 const val FIELD_GENDER = "Gender"
 const val FIELD_PASSWORD = "Password"
+
+const val FIELD_TEXT = "Text"
+const val FIELD_IMAGES = "Images"
+const val FIELD_LIKE_COUNT = "Like_Count"
+const val FIELD_COMMENT_COUNT = "Comment_Count"
+const val FIELD_POSTED_TIME = "Posted_Time"
 
 const val ERROR_CHECK_INTERNET = "Please check internet connection"
 const val ERROR_INVALID_OTP = "OTP is invalid"
