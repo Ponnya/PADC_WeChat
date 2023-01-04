@@ -20,6 +20,10 @@ class NewMomentPresenterImpl : AbstractBasePresenter<NewMomentView>(), NewMoment
         }
     }
 
+    override fun onTapClose() {
+        mView.closeNewMoment()
+    }
+
     override fun onUiReady(owner: LifecycleOwner) {
 
     }

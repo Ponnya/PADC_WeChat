@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.padc.ponnya.wechat.data.vos.MomentVO
 
 interface FirebaseApi {
     val database: FirebaseFirestore
@@ -32,4 +33,6 @@ interface FirebaseApi {
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit,
     )
+
+    fun getMoments(phone: String, onSuccess: (List<MomentVO>) -> Unit, onFailure: (String) -> Unit)
 }

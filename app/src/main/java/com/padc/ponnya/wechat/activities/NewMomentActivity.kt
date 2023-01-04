@@ -53,6 +53,10 @@ class NewMomentActivity : BaseAbstractActivity(), NewMomentView {
     }
 
     private fun setUpListener() {
+        binding.btnClose.setOnClickListener {
+            mPresenter.onTapClose()
+        }
+
         binding.btnCreateMoment.setOnClickListener {
             mPresenter.onTapCreate(binding.edtMomentContent.text.toString(), imageList)
         }

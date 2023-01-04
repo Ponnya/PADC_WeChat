@@ -6,4 +6,5 @@ import com.padc.ponnya.wechat.mvp.views.NewMomentView
 
 interface NewMomentPresenter : BasePresenter<NewMomentView>, SelectedImageDelegate {
     fun onTapCreate(text: String, imageList: List<Bitmap>)
+    fun onTapClose()
 }

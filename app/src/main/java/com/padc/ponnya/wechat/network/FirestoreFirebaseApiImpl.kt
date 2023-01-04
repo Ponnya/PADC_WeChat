@@ -1,6 +1,7 @@
 package com.padc.ponnya.wechat.network
 
 import android.graphics.Bitmap
+import com.padc.ponnya.wechat.data.vos.MomentVO
 import com.padc.ponnya.wechat.utils.*
 import java.io.ByteArrayOutputStream
 import java.util.*
@@ -96,5 +97,35 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
         }
 
 
+    }
+
+    override fun getMoments(
+        phone: String,
+        onSuccess: (List<MomentVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    ) {
+        database.collection(COLLECTION_ACCOUNT)
+            .document(phone)
+            .collection(COLLECTION_MOMENT)
+            .addSnapshotListener { value, error ->
+                error?.let { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) } ?: run {
+                    val momentList = arrayListOf<MomentVO>()
+                    val result = value?.documents ?: listOf()
+
+                    for (document in result) {
+                        println(document)
+                        val data = document.data ?: mapOf()
+                        val moment = MomentVO(
+                            text = data[FIELD_TEXT] as String?,
+                            images = data[FIELD_IMAGES] as List<String>?,
+                            likeCount = (data[FIELD_LIKE_COUNT] as Long?)?.toInt(),
+                            commentCount = (data[FIELD_COMMENT_COUNT] as Long?)?.toInt(),
+                            postedTime = data[FIELD_POSTED_TIME] as String?
+                        )
+                        momentList.add(moment)
+                    }
+                    onSuccess(momentList)
+                }
+            }
     }
 }

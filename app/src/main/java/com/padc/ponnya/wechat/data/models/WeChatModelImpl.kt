@@ -1,6 +1,7 @@
 package com.padc.ponnya.wechat.data.models
 
 import android.graphics.Bitmap
+import com.padc.ponnya.wechat.data.vos.MomentVO
 
 object WeChatModelImpl : WeChatModel {
     private lateinit var mPhone: String
@@ -34,5 +35,12 @@ object WeChatModelImpl : WeChatModel {
         onFailure: (String) -> Unit,
     ) {
         mFirebaseApi.createMoment(mPhone, text, imageList, onSuccess, onFailure)
+    }
+
+    override fun getMoments(
+        onSuccess: (List<MomentVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    ) {
+        mFirebaseApi.getMoments(mPhone, onSuccess, onFailure)
     }
 }
