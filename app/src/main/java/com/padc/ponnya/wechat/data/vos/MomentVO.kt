@@ -1,6 +1,6 @@
 package com.padc.ponnya.wechat.data.vos
 
-class MomentVO(
+data class MomentVO(
 
     val text: String? = "",
 
@@ -10,5 +10,5 @@ class MomentVO(
 
     val commentCount: Int? = 0,
 
-    val postedTime: String? = "",
+    val postedTime: Long? = 0L,
 )

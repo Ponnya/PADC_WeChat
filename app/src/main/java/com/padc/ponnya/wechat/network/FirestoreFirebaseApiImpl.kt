@@ -60,18 +60,18 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
         onFailure: (String) -> Unit,
     ) {
 
-        val postedTime = Calendar.getInstance().time.toString()
+        val postedTime = Calendar.getInstance().time.time
 
         val momentMap = hashMapOf(
             FIELD_TEXT to text,
             FIELD_LIKE_COUNT to 0L,
             FIELD_COMMENT_COUNT to 0L,
-            FIELD_POSTED_TIME to Calendar.getInstance().time.toString()
+            FIELD_POSTED_TIME to postedTime
         )
         database.collection(COLLECTION_ACCOUNT)
             .document(phone)
             .collection(COLLECTION_MOMENT)
-            .document(postedTime)
+            .document(postedTime.toString())
             .set(momentMap)
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) }
@@ -91,7 +91,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
                     database.collection(COLLECTION_ACCOUNT)
                         .document(phone)
                         .collection(COLLECTION_MOMENT)
-                        .document(postedTime)
+                        .document(postedTime.toString())
                         .update(FIELD_IMAGES, imageDownloadUrlList)
                 }
         }
@@ -111,7 +111,6 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
                 error?.let { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) } ?: run {
                     val momentList = arrayListOf<MomentVO>()
                     val result = value?.documents ?: listOf()
-
                     for (document in result) {
                         println(document)
                         val data = document.data ?: mapOf()
@@ -120,8 +119,9 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
                             images = data[FIELD_IMAGES] as List<String>?,
                             likeCount = (data[FIELD_LIKE_COUNT] as Long?)?.toInt(),
                             commentCount = (data[FIELD_COMMENT_COUNT] as Long?)?.toInt(),
-                            postedTime = data[FIELD_POSTED_TIME] as String?
-                        )
+                            postedTime = data[FIELD_POSTED_TIME] as Long?,
+
+                            )
                         momentList.add(moment)
                     }
                     onSuccess(momentList)

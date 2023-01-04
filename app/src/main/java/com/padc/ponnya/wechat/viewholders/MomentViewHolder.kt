@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.padc.ponnya.wechat.adapters.MomentImageAdapter
 import com.padc.ponnya.wechat.data.vos.MomentVO
 import com.padc.ponnya.wechat.databinding.ViewholderMomentBinding
+import com.padc.ponnya.wechat.utils.toDuration
 
 class MomentViewHolder(private val binding: ViewholderMomentBinding) :
     BaseAbstractViewHolder<MomentVO>(binding) {
@@ -11,6 +12,7 @@ class MomentViewHolder(private val binding: ViewholderMomentBinding) :
         binding.tvMomentText.text = data.text
         binding.tvLoveCount.text = data.likeCount.toString()
         binding.tvCommentCount.text = data.commentCount.toString()
+        binding.tvMomentPostedTime.text = data.postedTime?.toDuration()
 
         with(binding.rvMomentImage) {
             val momentImageAdapter = MomentImageAdapter()
