@@ -33,6 +33,7 @@ const val TITLE_ME = "Me"
 
 const val COLLECTION_ACCOUNT = "Account"
 const val COLLECTION_MOMENT = "Moment"
+const val COLLECTION_LIKE = "Like_List"
 
 const val FIELD_NAME = "Name"
 const val FIELD_PHONE = "Phone"

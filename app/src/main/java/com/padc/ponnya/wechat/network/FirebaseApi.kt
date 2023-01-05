@@ -35,4 +35,13 @@ interface FirebaseApi {
     )
 
     fun getMoments(phone: String, onSuccess: (List<MomentVO>) -> Unit, onFailure: (String) -> Unit)
+
+    fun likeCountIncreaseOrDecrease(
+        phone: String,
+        postedPhone: String,
+        postedTime: String,
+        onFailure: (String) -> Unit,
+    )
+
+    // fun isLikeCheck(postedTime: String, phone: String,onSuccess: (Boolean) -> Unit,onFailure: (String) -> Unit)
 }

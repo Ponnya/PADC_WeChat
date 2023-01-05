@@ -33,7 +33,7 @@ class MomentFragment : BaseAbstractFragment(), MomentFragmentView {
     }
 
     private fun setUpRecyclerView() {
-        momentAdapter = MomentAdapter()
+        momentAdapter = MomentAdapter(mPresenter)
         with(binding.rvMoment) {
             adapter = momentAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

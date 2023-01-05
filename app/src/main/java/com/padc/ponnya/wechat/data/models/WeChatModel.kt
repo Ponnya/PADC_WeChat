@@ -29,4 +29,11 @@ interface WeChatModel {
     )
 
     fun getMoments(onSuccess: (List<MomentVO>) -> Unit, onFailure: (String) -> Unit)
+
+    fun likeCountIncreaseOrDecrease(
+        postedPhone: String,
+        postedTime: String,
+        onFailure: (String) -> Unit,
+    )
+
 }

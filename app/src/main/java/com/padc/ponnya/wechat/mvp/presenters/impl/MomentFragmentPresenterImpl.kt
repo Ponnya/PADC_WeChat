@@ -14,12 +14,15 @@ class MomentFragmentPresenterImpl : AbstractBasePresenter<MomentFragmentView>(),
                 val currentTime = Calendar.getInstance().time.time
                 val momentList = it.map { momentVO ->
                     momentVO.copy(
-                        postedTime = momentVO.postedTime?.let { time -> return@let currentTime - time }
-                            ?: run { return@run 0L })
+                        duration = momentVO.postedTime.let { time -> return@let currentTime - time })
                 }
                 mView.showData(momentList.reversed())
             },
             onFailure = { mView.showError(it) }
         )
+    }
+
+    override fun onTapLike(phone: String, postedTime: Long) {
+        mModel.likeCountIncreaseOrDecrease(phone, postedTime.toString()) { mView.showError(it) }
     }
 }

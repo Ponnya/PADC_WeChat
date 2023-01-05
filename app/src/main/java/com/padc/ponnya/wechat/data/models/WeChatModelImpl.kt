@@ -43,4 +43,13 @@ object WeChatModelImpl : WeChatModel {
     ) {
         mFirebaseApi.getMoments(mPhone, onSuccess, onFailure)
     }
+
+    override fun likeCountIncreaseOrDecrease(
+        postedPhone: String,
+        postedTime: String,
+        onFailure: (String) -> Unit,
+    ) {
+        mFirebaseApi.likeCountIncreaseOrDecrease(mPhone, postedPhone, postedTime, onFailure)
+    }
+
 }

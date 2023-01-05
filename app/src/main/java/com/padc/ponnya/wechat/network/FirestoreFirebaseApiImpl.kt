@@ -1,6 +1,7 @@
 package com.padc.ponnya.wechat.network
 
 import android.graphics.Bitmap
+import com.google.firebase.firestore.FieldPath
 import com.padc.ponnya.wechat.data.vos.MomentVO
 import com.padc.ponnya.wechat.utils.*
 import java.io.ByteArrayOutputStream
@@ -104,28 +105,98 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
         onSuccess: (List<MomentVO>) -> Unit,
         onFailure: (String) -> Unit,
     ) {
-        database.collection(COLLECTION_ACCOUNT)
+        /*      database.collectionGroup(COLLECTION_LIKE).whereIn(FIELD_PHONE, listOf("09260990691"))
+            .get().addOnSuccessListener {
+                println("finssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
+                println(it.documents)
+            }
+            .addOnFailureListener {
+                println(it.localizedMessage)
+            }*/
+
+
+        with(database.collection(COLLECTION_ACCOUNT)
             .document(phone)
-            .collection(COLLECTION_MOMENT)
-            .addSnapshotListener { value, error ->
+            .collection(COLLECTION_MOMENT)) {
+
+
+            addSnapshotListener { value, error ->
                 error?.let { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) } ?: run {
                     val momentList = arrayListOf<MomentVO>()
                     val result = value?.documents ?: listOf()
+
                     for (document in result) {
-                        println(document)
                         val data = document.data ?: mapOf()
                         val moment = MomentVO(
-                            text = data[FIELD_TEXT] as String?,
-                            images = data[FIELD_IMAGES] as List<String>?,
-                            likeCount = (data[FIELD_LIKE_COUNT] as Long?)?.toInt(),
-                            commentCount = (data[FIELD_COMMENT_COUNT] as Long?)?.toInt(),
-                            postedTime = data[FIELD_POSTED_TIME] as Long?,
-
-                            )
+                            text = data[FIELD_TEXT] as String,
+                            images = data[FIELD_IMAGES] as List<String>,
+                            likeCount = (data[FIELD_LIKE_COUNT] as Long).toInt(),
+                            commentCount = (data[FIELD_COMMENT_COUNT] as Long).toInt(),
+                            postedTime = data[FIELD_POSTED_TIME] as Long,
+                            momentPhone = phone,
+                        )
                         momentList.add(moment)
                     }
                     onSuccess(momentList)
                 }
             }
+
+        }
+
     }
+
+    override fun likeCountIncreaseOrDecrease(
+        phone: String,
+        postedPhone: String,
+        postedTime: String,
+        onFailure: (String) -> Unit,
+    ) {
+        with(database.collection(COLLECTION_ACCOUNT)
+            .document(postedPhone)
+            .collection(COLLECTION_MOMENT)
+            .document(postedTime)) {
+
+            collection(COLLECTION_LIKE)
+                .whereEqualTo(FieldPath.documentId(), phone)
+                .get()
+                .addOnSuccessListener {
+                    if (it.isEmpty) {
+                        collection(COLLECTION_LIKE)
+                            .document(phone)
+                            .set({})
+                    } else {
+                        collection(COLLECTION_LIKE)
+                            .document(phone)
+                            .delete()
+                    }
+                    collection(COLLECTION_LIKE)
+                        .get().addOnSuccessListener { likeData ->
+                            update(FIELD_LIKE_COUNT, likeData.documents.size)
+                        }
+                }
+                .addOnFailureListener {
+                    onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET)
+                }
+        }
+    }
+
+    /*  override fun isLikeCheck(
+          postedTime: String,
+          phone: String,
+          onSuccess: (Boolean) -> Unit,
+          onFailure: (String) -> Unit,
+      ) {
+          database.collection(COLLECTION_ACCOUNT)
+              .document(phone)
+              .collection(COLLECTION_MOMENT)
+              .document(postedTime)
+              .collection(COLLECTION_LIKE)
+              .whereEqualTo(FieldPath.documentId(), phone)
+              .get().addOnSuccessListener {
+                  onSuccess(!it.isEmpty)
+              }
+              .addOnFailureListener {
+                  onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET)
+              }
+      }*/
 }
