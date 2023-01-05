@@ -39,4 +39,5 @@
     <dimen name="width_auto_complete_text_view_month">115dp</dimen>
     <dimen name="width_auto_complete_text_view_year">105dp</dimen>
     <dimen name="width_height_selected_image">100dp</dimen>
+    <dimen name="width_height_me_image">120dp</dimen>
 </resources>

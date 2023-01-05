@@ -1,14 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.MeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Me" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:backgroundTint="@color/colorSecondaryLight"
+        app:cardCornerRadius="@dimen/margin_medium_2">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="@dimen/width_height_me_image"
+                android:layout_height="@dimen/width_height_me_image"
+                android:layout_margin="@dimen/margin_medium"
+                android:scaleType="centerCrop"
+                android:src="@drawable/moment_testing_image" />
+
+            <ImageButton
+                android:id="@+id/btnSetProfile"
+                android:layout_width="@dimen/margin_large"
+                android:layout_height="@dimen/margin_large"
+                android:layout_alignStart="@id/ivProfile"
+                android:layout_alignBottom="@id/ivProfile"
+                android:background="@drawable/ic_baseline_image_white_24dp" />
+
+            <ImageView
+                android:id="@+id/ivQRCode"
+                android:layout_width="@dimen/margin_xxlarge"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:layout_alignEnd="@id/ivProfile"
+                android:layout_alignBottom="@id/ivProfile"
+                android:src="@color/colorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:layout_toEndOf="@id/ivProfile"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_regular_3x"
+                tools:text="Phyo Zeyar" />
+
+            <ImageView
+                android:id="@+id/ivPhone"
+                android:layout_width="@dimen/margin_medium_3"
+                android:layout_height="@dimen/margin_medium_3"
+                android:layout_below="@id/tvName"
+                android:layout_alignStart="@id/tvName"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@drawable/ic_baseline_phone_android_white_24dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_toEndOf="@id/ivPhone"
+                android:textColor="@color/colorPrimary"
+                tools:text="09260990695" />
+
+            <ImageView
+                android:id="@+id/ivDOB"
+                android:layout_width="@dimen/margin_medium_3"
+                android:layout_height="@dimen/margin_medium_3"
+                android:layout_below="@id/ivPhone"
+                android:layout_alignStart="@id/ivPhone"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@drawable/ic_baseline_calendar_month_white_24dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDOB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivPhone"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_toEndOf="@id/ivDOB"
+                android:textColor="@color/colorPrimary"
+                tools:text="1988-06-05" />
+
+            <ImageView
+                android:id="@+id/ivGender"
+                android:layout_width="@dimen/margin_medium_3"
+                android:layout_height="@dimen/margin_medium_3"
+                android:layout_below="@id/ivDOB"
+                android:layout_alignStart="@id/ivDOB"
+                android:layout_marginTop="@dimen/margin_small"
+                android:src="@drawable/ic_baseline_assignment_ind_white_24dp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivDOB"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_toEndOf="@id/ivGender"
+                android:textColor="@color/colorPrimary"
+                tools:text="Male" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
