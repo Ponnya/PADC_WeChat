@@ -38,4 +38,6 @@
     <string name="lbl_new_moment">New Moment</string>
     <string name="lbl_create">Create</string>
     <string name="hint_moment_content">What\'s on your mind</string>
+    <string name="lbl_online">Online</string>
+    <string name="lbl_type_a_message">Type a message...</string>
 </resources>

@@ -34,5 +34,6 @@ class SelectedImageViewHolder(
             .load(R.drawable.add_blue_24dp)
             .placeholder(R.color.colorPrimary)
             .into(binding.ivSelectedImage)
+
     }
 }

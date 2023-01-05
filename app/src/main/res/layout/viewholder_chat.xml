@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/margin_medium_2"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium_2">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivUserProfile"
+        android:layout_width="@dimen/width_height_chat_profile_image"
+        android:layout_height="@dimen/width_height_chat_profile_image"
+        android:src="@drawable/moment_testing_image" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_chat_text"
+        android:backgroundTint="@color/colorChat"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/margin_medium">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:textColor="@color/colorSecondaryLight"
+                android:textSize="@dimen/text_regular_2x"
+                tools:text="How are you?" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChatSentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvChatText"
+                android:layout_alignStart="@id/tvChatText"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:textSize="@dimen/text_size_chat_sent_time"
+                tools:text="12:30 AM" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_chat_text"
+        android:paddingEnd="@dimen/width_height_selected_image">
+
+        <ImageView
+            android:id="@+id/ivChatImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/moment_testing_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvChatSentTimeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivChatImage"
+            android:layout_alignEnd="@id/ivChatImage"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:textSize="@dimen/text_size_chat_sent_time"
+            tools:text="12:30 AM" />
+    </RelativeLayout>
+
+</RelativeLayout>
