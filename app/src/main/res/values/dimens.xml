@@ -41,6 +41,7 @@
     <dimen name="width_height_selected_image">100dp</dimen>
     <dimen name="width_height_me_image">120dp</dimen>
     <dimen name="width_height_chat_profile_image">30dp</dimen>
+    <dimen name="width_height_contact_profile">50dp</dimen>
     <dimen name="margin_chat_text">40dp</dimen>
     <dimen name="text_size_chat_sent_time">8sp</dimen>
 </resources>

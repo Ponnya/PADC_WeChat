@@ -13,4 +13,6 @@
     <color name="colorSecondaryLight">#113A5D</color>
     <color name="colorGray">#888888</color>
     <color name="colorChat">#F3F3F3</color>
+    <color name="light_dark_text_color">#888888</color>
+    <color name="otp_color">#FCFCFC</color>
 </resources>
