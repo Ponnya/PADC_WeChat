@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_margin="@dimen/margin_medium"
+    android:background="@drawable/rounded_four_corner_select_contact_item">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="@dimen/width_height_contact_profile"
+        android:layout_height="@dimen/width_height_contact_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/moment_testing_image" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/unSelectProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/colorSecondaryLight"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_baseline_close_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGroupName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/txt_contact_name"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_smaller" />
+
+
+</RelativeLayout>

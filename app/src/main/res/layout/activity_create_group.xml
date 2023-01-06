@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateGroupActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/closeNewGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_baseline_close_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/closeNewGroup"
+        android:layout_centerHorizontal="true"
+        android:text="New Group"
+        android:textColor="@color/colorSecondaryLight"
+        android:textSize="@dimen/text_heading_1x"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCreateGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/closeNewGroup"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:padding="@dimen/margin_medium"
+        android:text="@string/lbl_create"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputGpName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/closeNewGroup"
+        android:layout_alignStart="@id/closeNewGroup"
+        android:layout_alignEnd="@id/btnCreateGroup"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_medium_3"
+        android:hint="@string/txt_title_new_gp"
+        app:boxBackgroundColor="@color/colorPrimary"
+        app:boxStrokeColor="@color/light_dark_text_color"
+        app:helperTextTextColor="@android:color/holo_red_light"
+        app:hintTextColor="@color/colorSecondaryLight">
+
+        <EditText
+            android:id="@+id/edtGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_below="@id/txtInputGpName"
+        android:layout_alignStart="@id/closeNewGroup"
+        android:layout_alignEnd="@id/btnCreateGroup"
+        android:layout_marginTop="@dimen/margin_medium_n"
+        android:background="@drawable/rounded_four_corner_search_btn">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnSearchContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:src="@drawable/ic_baseline_search_blue_light_24dp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/btnSearchContact"
+            android:background="@android:color/transparent"
+            android:hint="@string/txt_search"
+            android:inputType="textNoSuggestions"
+            android:textColorHint="@color/light_dark_text_color" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnDeleteSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium_2"
+            android:src="@drawable/ic_baseline_close_24dp" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSelectedContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlSearchBar"
+        android:layout_alignStart="@id/closeNewGroup"
+        android:layout_marginTop="@dimen/margin_medium" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rvSelectedContact"
+        android:layout_alignStart="@id/closeNewGroup"
+        android:layout_alignEnd="@id/btnCreateGroup"
+        android:layout_alignParentEnd="true"
+        android:scrollbars="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContactsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>
