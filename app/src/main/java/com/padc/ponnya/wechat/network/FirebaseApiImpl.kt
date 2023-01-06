@@ -1,28 +1,35 @@
 package com.padc.ponnya.wechat.network
 
 import android.graphics.Bitmap
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FieldPath
 import com.padc.ponnya.wechat.data.vos.MomentVO
+import com.padc.ponnya.wechat.data.vos.UserVO
 import com.padc.ponnya.wechat.utils.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-object FirestoreFirebaseApiImpl : FirebaseApi {
+object FirebaseApiImpl : FirebaseApi {
     override fun login(
         phone: String,
         password: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit,
     ) {
-        database.collection(COLLECTION_ACCOUNT)
+        firestoreDb.collection(COLLECTION_ACCOUNT)
             .whereEqualTo(FIELD_PHONE, phone)
             .whereEqualTo(FIELD_PASSWORD, password)
             .get()
             .addOnSuccessListener {
                 if (it.documents.isNotEmpty()) onSuccess()
                 else onFailure(ERROR_INVALID_PHONE_NUMBER_AND_PASSWORD)
+
             }
             .addOnFailureListener { onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET) }
+
+
     }
 
     override fun register(
@@ -41,7 +48,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
             FIELD_GENDER to gender,
             FIELD_PASSWORD to password,
         )
-        database.collection(COLLECTION_ACCOUNT)
+        firestoreDb.collection(COLLECTION_ACCOUNT)
             .document(phone)
             .set(accountMap)
             .addOnSuccessListener {
@@ -69,7 +76,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
             FIELD_COMMENT_COUNT to 0L,
             FIELD_POSTED_TIME to postedTime
         )
-        database.collection(COLLECTION_ACCOUNT)
+        firestoreDb.collection(COLLECTION_ACCOUNT)
             .document(phone)
             .collection(COLLECTION_MOMENT)
             .document(postedTime.toString())
@@ -89,7 +96,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
                 }.addOnCompleteListener {
                     val imageUrl = it.result?.toString()
                     imageUrl?.let { url -> imageDownloadUrlList.add(url) }
-                    database.collection(COLLECTION_ACCOUNT)
+                    firestoreDb.collection(COLLECTION_ACCOUNT)
                         .document(phone)
                         .collection(COLLECTION_MOMENT)
                         .document(postedTime.toString())
@@ -115,7 +122,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
             }*/
 
 
-        with(database.collection(COLLECTION_ACCOUNT)
+        with(firestoreDb.collection(COLLECTION_ACCOUNT)
             .document(phone)
             .collection(COLLECTION_MOMENT)) {
 
@@ -151,7 +158,7 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
         postedTime: String,
         onFailure: (String) -> Unit,
     ) {
-        with(database.collection(COLLECTION_ACCOUNT)
+        with(firestoreDb.collection(COLLECTION_ACCOUNT)
             .document(postedPhone)
             .collection(COLLECTION_MOMENT)
             .document(postedTime)) {
@@ -199,4 +206,76 @@ object FirestoreFirebaseApiImpl : FirebaseApi {
                   onFailure(it.localizedMessage ?: ERROR_CHECK_INTERNET)
               }
       }*/
+
+    /* override fun getChatMessage(
+         sender: String,
+         receiver: String,
+         onSuccess: (List<UserVO>) -> Unit,
+         onFailure: (String) -> Unit,
+     ) {
+         realTimeDb.child(FIELD_MESSAGES)
+             .child(sender)
+             .child(receiver)
+             .addValueEventListener(object : ValueEventListener {
+                 override fun onDataChange(snapshot: DataSnapshot) {
+                     val messageList = arrayListOf<UserVO>()
+                     snapshot.children.forEach { dataSnapshot ->
+                         dataSnapshot.getValue(UserVO::class.java)?.let {
+                             messageList.add(it)
+                         }
+                     }
+                     onSuccess(messageList)
+                 }
+
+                 override fun onCancelled(error: DatabaseError) {
+                     onFailure(error.message)
+                 }
+
+             })
+
+     }*/
+
+    override fun getChatList(
+        sender: String,
+        onSuccess: (List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    ) {
+        realTimeDb.child(FIELD_MESSAGES)
+            .child(sender)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val chatList = arrayListOf<UserVO>()
+                    snapshot.children.forEach { dataSnapshot ->
+                        var userVO: UserVO = UserVO()
+                        dataSnapshot.children
+                            .find {
+                                it.child("userId").getValue(String::class.java) == dataSnapshot.key
+                            }
+                            ?.getValue(UserVO::class.java).let {
+                                if (it != null) {
+                                    userVO = it
+                                }
+                            }
+                        val latestMessage = dataSnapshot.children.maxByOrNull {
+                            it.child("timestamp").getValue(Long::class.java)!!
+                        }
+                        userVO.lastMessage =
+                            latestMessage?.child("message")?.getValue(String::class.java) ?: ""
+                        userVO.sentBy =
+                            latestMessage?.child("userId")?.getValue(String::class.java) ?: ""
+                        userVO.lastMessageSentTime =
+                            latestMessage?.child("timestamp")?.getValue(Long::class.java) ?: 0L
+                        chatList.add(userVO)
+                    }
+                    onSuccess(chatList)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onFailure(error.message)
+                }
+
+            })
+
+    }
+
 }

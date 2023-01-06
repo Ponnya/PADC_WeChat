@@ -1,47 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_medium_2"
-    android:layout_marginEnd="@dimen/margin_medium_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/margin_medium"
+    android:layout_marginEnd="@dimen/margin_medium"
     android:layout_marginBottom="@dimen/margin_medium"
-    android:background="@drawable/rounded_four_corner_select_contact_item">
+    app:cardCornerRadius="@dimen/margin_medium_2">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgProfile"
-        android:layout_width="@dimen/width_height_chat_profile_image"
-        android:layout_height="@dimen/width_height_chat_profile_image"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_medium"
-        android:src="@drawable/moment_testing_image" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="@dimen/width_height_contact_profile"
+            android:layout_height="@dimen/width_height_contact_profile"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:src="@drawable/moment_testing_image" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtChatName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/imgProfile"
-        android:layout_alignBottom="@id/imgProfile"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_toEndOf="@id/imgProfile"
-        android:gravity="center"
-        android:text="@string/txt_contact_name"
-        android:textSize="@dimen/text_regular_2x" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtChatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_toEndOf="@id/imgProfile"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:textColor="@color/colorSecondaryLight"
+            android:gravity="center"
+            android:text="@string/txt_contact_name"
+            android:textSize="@dimen/text_regular_2x" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtLastChatDateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/imgProfile"
-        android:layout_alignBottom="@id/imgProfile"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:gravity="center"
-        android:textSize="@dimen/text_regular_2x"
-        tools:text="12/2/2022" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSentBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/txtChatName"
+            android:layout_alignBottom="@id/imgProfile"
+            tools:text="You : " />
 
-</RelativeLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLatestMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/imgProfile"
+            android:layout_toStartOf="@id/txtLastChatDateTime"
+            android:layout_toEndOf="@id/tvSentBy"
+            tools:text="Hello" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtLastChatDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/imgProfile"
+            android:layout_alignBottom="@id/imgProfile"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:gravity="center"
+            tools:text="12/2/2022" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

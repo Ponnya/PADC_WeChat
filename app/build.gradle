@@ -65,6 +65,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     //Storage
     implementation 'com.google.firebase:firebase-storage'
+    //Database(Realtime)
+    implementation 'com.google.firebase:firebase-database-ktx'
 
     //ReactiveX
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'

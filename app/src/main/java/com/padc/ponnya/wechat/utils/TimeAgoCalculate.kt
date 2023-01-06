@@ -16,7 +16,6 @@ fun Long.toDuration(): String {
     for (i in times.indices) {
         val current = times[i]
         val temp = this / current
-        println(temp)
         if (temp > 0) {
             res.append(temp).append(" ").append(timesString[i])
                 .append(if (temp != 1L) "s" else "").append(" ago")

@@ -2,12 +2,13 @@ package com.padc.ponnya.wechat.data.models
 
 import android.graphics.Bitmap
 import com.padc.ponnya.wechat.data.vos.MomentVO
+import com.padc.ponnya.wechat.data.vos.UserVO
 import com.padc.ponnya.wechat.network.FirebaseApi
-import com.padc.ponnya.wechat.network.FirestoreFirebaseApiImpl
+import com.padc.ponnya.wechat.network.FirebaseApiImpl
 
 interface WeChatModel {
     val mFirebaseApi: FirebaseApi
-        get() = FirestoreFirebaseApiImpl
+        get() = FirebaseApiImpl
 
     fun login(phone: String, password: String, onSuccess: () -> Unit, onFailure: (String) -> Unit)
 
@@ -35,5 +36,13 @@ interface WeChatModel {
         postedTime: String,
         onFailure: (String) -> Unit,
     )
+
+    fun getChatMessage(
+        receiver: String,
+        onSuccess: (List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun getChatList(onSuccess: (List<UserVO>) -> Unit, onFailure: (String) -> Unit)
 
 }

@@ -2,6 +2,7 @@ package com.padc.ponnya.wechat.data.models
 
 import android.graphics.Bitmap
 import com.padc.ponnya.wechat.data.vos.MomentVO
+import com.padc.ponnya.wechat.data.vos.UserVO
 
 object WeChatModelImpl : WeChatModel {
     private lateinit var mPhone: String
@@ -50,6 +51,21 @@ object WeChatModelImpl : WeChatModel {
         onFailure: (String) -> Unit,
     ) {
         mFirebaseApi.likeCountIncreaseOrDecrease(mPhone, postedPhone, postedTime, onFailure)
+    }
+
+    override fun getChatMessage(
+        receiver: String,
+        onSuccess: (List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    ) {
+        mFirebaseApi.getChatMessage(mPhone, receiver, onSuccess, onFailure)
+    }
+
+    override fun getChatList(
+        onSuccess: (List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    ) {
+        mFirebaseApi.getChatList(mPhone, onSuccess, onFailure)
     }
 
 }

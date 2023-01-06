@@ -31,6 +31,7 @@ const val TITLE_CHAT = "Chat"
 const val TITLE_CONTACTS = "Contacts"
 const val TITLE_ME = "Me"
 
+//Firestore Database
 const val COLLECTION_ACCOUNT = "Account"
 const val COLLECTION_MOMENT = "Moment"
 const val COLLECTION_LIKE = "Like_List"
@@ -46,6 +47,14 @@ const val FIELD_IMAGES = "Images"
 const val FIELD_LIKE_COUNT = "Like_Count"
 const val FIELD_COMMENT_COUNT = "Comment_Count"
 const val FIELD_POSTED_TIME = "Posted_Time"
+
+//Realtime Database
+const val FIELD_MESSAGES = "Messages"
+const val FIELD_FILE = "file"
+const val FIELD_MESSAGE = "message"
+const val FIELD_PROFILE_PIC = "profilePic"
+const val FIELD_TIMESTAMP = "timestamp"
+const val FIELD_USER_ID = "userId"
 
 const val ERROR_CHECK_INTERNET = "Please check internet connection"
 const val ERROR_INVALID_OTP = "OTP is invalid"
