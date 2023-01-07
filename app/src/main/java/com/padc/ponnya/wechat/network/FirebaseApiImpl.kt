@@ -207,7 +207,7 @@ object FirebaseApiImpl : FirebaseApi {
               }
       }*/
 
-    /* override fun getChatMessage(
+     override fun getChatMessage(
          sender: String,
          receiver: String,
          onSuccess: (List<UserVO>) -> Unit,
@@ -233,7 +233,7 @@ object FirebaseApiImpl : FirebaseApi {
 
              })
 
-     }*/
+     }
 
     override fun getChatList(
         sender: String,

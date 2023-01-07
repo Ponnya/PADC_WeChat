@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.padc.ponnya.wechat.activities.ChatRoomActivity
 import com.padc.ponnya.wechat.adapters.ChatItemAdapter
 import com.padc.ponnya.wechat.data.vos.UserVO
 import com.padc.ponnya.wechat.databinding.FragmentChatBinding
@@ -34,7 +35,7 @@ class ChatFragment : BaseAbstractFragment(), ChatFragmentView {
     }
 
     private fun setUpChatsListRecycler() {
-        mChatsAdapter = ChatItemAdapter()
+        mChatsAdapter = ChatItemAdapter(mPresenter)
         binding.rvChatsList.adapter = mChatsAdapter
         binding.rvChatsList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -42,6 +43,10 @@ class ChatFragment : BaseAbstractFragment(), ChatFragmentView {
 
     override fun showChatList(chatList: List<UserVO>) {
         mChatsAdapter.setNewData(chatList)
+    }
+
+    override fun openChatRoom(receiver: String) {
+        startActivity(context?.let { ChatRoomActivity.newIntent(it, receiver) })
     }
 
 }

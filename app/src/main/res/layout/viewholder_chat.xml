@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_medium_2"
     android:layout_marginTop="@dimen/margin_medium"
     android:layout_marginEnd="@dimen/margin_medium_2">
@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_chat_text"
         android:backgroundTint="@color/colorChat"
+        android:layout_marginBottom="@dimen/margin_medium"
         android:visibility="gone"
         app:cardCornerRadius="@dimen/margin_medium">
 
@@ -45,6 +46,7 @@
                 android:layout_below="@id/tvChatText"
                 android:layout_alignStart="@id/tvChatText"
                 android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
                 android:textSize="@dimen/text_size_chat_sent_time"
                 tools:text="12:30 AM" />
         </RelativeLayout>
@@ -52,14 +54,17 @@
     </androidx.cardview.widget.CardView>
 
     <RelativeLayout
+        android:id="@+id/rlMessageImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/cardViewText"
         android:layout_marginStart="@dimen/margin_chat_text"
+        android:visibility="gone"
         android:paddingEnd="@dimen/width_height_selected_image">
 
         <ImageView
             android:id="@+id/ivChatImage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/moment_testing_image" />

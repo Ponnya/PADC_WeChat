@@ -3,11 +3,21 @@ package com.padc.ponnya.wechat.viewholders
 import com.bumptech.glide.Glide
 import com.padc.ponnya.wechat.data.vos.UserVO
 import com.padc.ponnya.wechat.databinding.ViewholderChatItemBinding
+import com.padc.ponnya.wechat.delegates.ChatListDelegate
 import com.padc.ponnya.wechat.utils.toDuration
 import java.util.*
 
-class ChatItemViewHolder(private val binding: ViewholderChatItemBinding) :
+class ChatItemViewHolder(
+    private val mDelegate: ChatListDelegate,
+    private val binding: ViewholderChatItemBinding,
+) :
     BaseAbstractViewHolder<UserVO>(binding) {
+    init {
+        binding.root.setOnClickListener {
+            mData?.userId?.let { receiver -> mDelegate.onTapChat(receiver) }
+        }
+    }
+
     override fun bindData(data: UserVO) {
         mData = data
         if (data.profilePic.isNotBlank()) {

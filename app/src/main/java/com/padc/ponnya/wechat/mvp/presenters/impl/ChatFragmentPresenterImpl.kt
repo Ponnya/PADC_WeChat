@@ -9,4 +9,8 @@ class ChatFragmentPresenterImpl : AbstractBasePresenter<ChatFragmentView>(), Cha
     override fun onUiReady(owner: LifecycleOwner) {
         mModel.getChatList({ mView.showChatList(it) }) { mView.showError(it) }
     }
+
+    override fun onTapChat(receiver: String) {
+        mView.openChatRoom(receiver)
+    }
 }

@@ -3,6 +3,7 @@ package com.padc.ponnya.wechat.data.models
 import android.graphics.Bitmap
 import com.padc.ponnya.wechat.data.vos.MomentVO
 import com.padc.ponnya.wechat.data.vos.UserVO
+import java.util.*
 
 object WeChatModelImpl : WeChatModel {
     private lateinit var mPhone: String
@@ -58,7 +59,20 @@ object WeChatModelImpl : WeChatModel {
         onSuccess: (List<UserVO>) -> Unit,
         onFailure: (String) -> Unit,
     ) {
-        mFirebaseApi.getChatMessage(mPhone, receiver, onSuccess, onFailure)
+        mFirebaseApi.getChatMessage(
+            sender = mPhone,
+            receiver = receiver,
+            onSuccess = {
+                val currentTime = Calendar.getInstance().time.time
+                val messageList = it.map { userVO ->
+                    userVO.copy(
+                        duration = userVO.timestamp.let { time -> return@let currentTime - time },
+                        isSender = mPhone == userVO.userId
+                    )
+                }
+                onSuccess(messageList)
+            },
+            onFailure = onFailure)
     }
 
     override fun getChatList(

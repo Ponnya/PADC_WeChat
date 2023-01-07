@@ -50,7 +50,12 @@ interface FirebaseApi {
 
     // fun isLikeCheck(postedTime: String, phone: String,onSuccess: (Boolean) -> Unit,onFailure: (String) -> Unit)
 
-    //fun getChatMessage(sender: String, receiver: String, onSuccess: (List<UserVO>) -> Unit, onFailure: (String) -> Unit)
+    fun getChatMessage(
+        sender: String,
+        receiver: String,
+        onSuccess: (List<UserVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
 
     fun getChatList(sender: String, onSuccess: (List<UserVO>) -> Unit, onFailure: (String) -> Unit)
 }
