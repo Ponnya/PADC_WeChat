@@ -58,4 +58,13 @@ interface FirebaseApi {
     )
 
     fun getChatList(sender: String, onSuccess: (List<UserVO>) -> Unit, onFailure: (String) -> Unit)
+
+    fun insertMessage(
+        sender: String,
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    )
 }

@@ -73,11 +73,11 @@
             android:id="@+id/rvChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/tvChatMessage"
+            android:layout_above="@id/edtChatMessage"
             android:layout_marginBottom="@dimen/margin_medium_2" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/tvChatMessage"
+            android:id="@+id/edtChatMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/bottomAppBar"
@@ -99,6 +99,7 @@
             android:src="@drawable/ic_baseline_send_white_24dp"
             app:civ_circle_background_color="@color/colorSecondary" />
 
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
@@ -107,7 +108,7 @@
             app:itemIconTint="@color/colorSecondaryLight"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/chat_bottom_app_bar_menu" />
-
     </RelativeLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

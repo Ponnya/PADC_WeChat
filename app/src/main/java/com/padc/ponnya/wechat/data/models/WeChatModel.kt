@@ -45,4 +45,12 @@ interface WeChatModel {
 
     fun getChatList(onSuccess: (List<UserVO>) -> Unit, onFailure: (String) -> Unit)
 
+    fun insertMessage(
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    )
+
 }

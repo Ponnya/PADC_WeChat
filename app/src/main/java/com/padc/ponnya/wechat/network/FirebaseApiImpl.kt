@@ -5,6 +5,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FieldPath
+import com.padc.ponnya.wechat.data.vos.MessageVO
 import com.padc.ponnya.wechat.data.vos.MomentVO
 import com.padc.ponnya.wechat.data.vos.UserVO
 import com.padc.ponnya.wechat.utils.*
@@ -136,7 +137,7 @@ object FirebaseApiImpl : FirebaseApi {
                         val data = document.data ?: mapOf()
                         val moment = MomentVO(
                             text = data[FIELD_TEXT] as String,
-                            images = data[FIELD_IMAGES] as List<String>,
+                            images = (data[FIELD_IMAGES] as List<String>?) ?: listOf(),
                             likeCount = (data[FIELD_LIKE_COUNT] as Long).toInt(),
                             commentCount = (data[FIELD_COMMENT_COUNT] as Long).toInt(),
                             postedTime = data[FIELD_POSTED_TIME] as Long,
@@ -277,5 +278,42 @@ object FirebaseApiImpl : FirebaseApi {
             })
 
     }
+
+    override fun insertMessage(
+        sender: String,
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    ) {
+        val timestamp = Calendar.getInstance().time.time
+        realTimeDb.child(FIELD_MESSAGES)
+            .child(sender)
+            .child(receiver)
+            .child(timestamp.toString())
+            .setValue(MessageVO(
+                name = name,
+                profilePic = profilePic,
+                userId = sender,
+                message = message,
+                file = file,
+                timestamp = timestamp
+            )).addOnSuccessListener {
+                realTimeDb.child(FIELD_MESSAGES)
+                    .child(receiver)
+                    .child(sender)
+                    .child(timestamp.toString())
+                    .setValue(MessageVO(
+                        name = name,
+                        profilePic = profilePic,
+                        userId = sender,
+                        message = message,
+                        file = file,
+                        timestamp = timestamp
+                    ))
+            }
+    }
+
 
 }

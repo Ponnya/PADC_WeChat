@@ -5,4 +5,11 @@ import com.padc.ponnya.wechat.mvp.views.ChatRoomView
 
 interface ChatRoomPresenter : BasePresenter<ChatRoomView> {
     fun onUiReady(owner: LifecycleOwner, receiver: String)
+    fun onTapSend(
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    )
 }

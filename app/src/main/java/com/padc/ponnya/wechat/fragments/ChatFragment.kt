@@ -45,8 +45,8 @@ class ChatFragment : BaseAbstractFragment(), ChatFragmentView {
         mChatsAdapter.setNewData(chatList)
     }
 
-    override fun openChatRoom(receiver: String) {
-        startActivity(context?.let { ChatRoomActivity.newIntent(it, receiver) })
+    override fun openChatRoom(receiver: String, name: String, profilePic: String) {
+        startActivity(context?.let { ChatRoomActivity.newIntent(it, receiver, name, profilePic) })
     }
 
 }

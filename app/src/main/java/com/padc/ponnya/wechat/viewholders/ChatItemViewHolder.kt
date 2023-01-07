@@ -14,7 +14,11 @@ class ChatItemViewHolder(
     BaseAbstractViewHolder<UserVO>(binding) {
     init {
         binding.root.setOnClickListener {
-            mData?.userId?.let { receiver -> mDelegate.onTapChat(receiver) }
+            mData?.userId?.let { receiver ->
+                mDelegate.onTapChat(receiver,
+                    mData!!.name,
+                    mData!!.profilePic)
+            }
         }
     }
 

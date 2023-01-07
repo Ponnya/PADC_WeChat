@@ -10,7 +10,7 @@ class ChatFragmentPresenterImpl : AbstractBasePresenter<ChatFragmentView>(), Cha
         mModel.getChatList({ mView.showChatList(it) }) { mView.showError(it) }
     }
 
-    override fun onTapChat(receiver: String) {
-        mView.openChatRoom(receiver)
+    override fun onTapChat(receiver: String, name: String, profilePic: String) {
+        mView.openChatRoom(receiver, name, profilePic)
     }
 }

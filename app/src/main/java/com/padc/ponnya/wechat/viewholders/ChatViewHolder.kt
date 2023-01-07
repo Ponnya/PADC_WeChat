@@ -16,6 +16,8 @@ class ChatViewHolder(private val binding: ViewholderChatBinding) :
             binding.ivUserProfile.visibility = View.GONE
 
         } else {
+            binding.root.gravity = Gravity.LEFT
+            binding.ivUserProfile.visibility = View.VISIBLE
             with(data.profilePic) {
                 if (isNotBlank())
                     Glide.with(binding.root)
@@ -31,6 +33,8 @@ class ChatViewHolder(private val binding: ViewholderChatBinding) :
             binding.tvChatText.text = data.message
             binding.tvChatSentTime.text = data.duration.toDuration()
 
+        } else {
+            binding.cardViewText.visibility = View.GONE
         }
 
         if (data.file.isNotBlank()) {
@@ -41,7 +45,8 @@ class ChatViewHolder(private val binding: ViewholderChatBinding) :
                 .into(binding.ivChatImage)
 
             binding.tvChatSentTimeImage.text = data.duration.toDuration()
-
+        } else {
+            binding.rlMessageImage.visibility = View.GONE
         }
     }
 }

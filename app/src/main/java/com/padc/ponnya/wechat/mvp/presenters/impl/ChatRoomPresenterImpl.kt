@@ -18,4 +18,14 @@ class ChatRoomPresenterImpl : AbstractBasePresenter<ChatRoomView>(), ChatRoomPre
 
     }
 
+    override fun onTapSend(
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    ) {
+        mModel.insertMessage(receiver, message, file, name, profilePic)
+    }
+
 }

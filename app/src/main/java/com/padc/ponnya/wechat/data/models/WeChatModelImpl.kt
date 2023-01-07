@@ -82,4 +82,14 @@ object WeChatModelImpl : WeChatModel {
         mFirebaseApi.getChatList(mPhone, onSuccess, onFailure)
     }
 
+    override fun insertMessage(
+        receiver: String,
+        message: String,
+        file: String,
+        name: String,
+        profilePic: String,
+    ) {
+        mFirebaseApi.insertMessage(mPhone, receiver, message, file, name, profilePic)
+    }
+
 }
