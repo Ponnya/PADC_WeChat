@@ -49,8 +49,6 @@ interface WeChatModel {
         receiver: String,
         message: String,
         file: String,
-        name: String,
-        profilePic: String,
     )
 
 }

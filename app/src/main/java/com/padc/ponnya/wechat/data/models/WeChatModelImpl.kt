@@ -7,6 +7,8 @@ import java.util.*
 
 object WeChatModelImpl : WeChatModel {
     private lateinit var mPhone: String
+    private lateinit var mName: String
+    private lateinit var mProfilePic: String
     override fun login(
         phone: String,
         password: String,
@@ -63,6 +65,8 @@ object WeChatModelImpl : WeChatModel {
             sender = mPhone,
             receiver = receiver,
             onSuccess = {
+                mName = it.find { userVO -> mPhone == userVO.userId }?.name ?: ""
+                mProfilePic = it.find { userVO -> mPhone == userVO.userId }?.profilePic ?: ""
                 val currentTime = Calendar.getInstance().time.time
                 val messageList = it.map { userVO ->
                     userVO.copy(
@@ -86,10 +90,8 @@ object WeChatModelImpl : WeChatModel {
         receiver: String,
         message: String,
         file: String,
-        name: String,
-        profilePic: String,
     ) {
-        mFirebaseApi.insertMessage(mPhone, receiver, message, file, name, profilePic)
+        mFirebaseApi.insertMessage(mPhone, receiver, message, file, mName, mProfilePic)
     }
 
 }

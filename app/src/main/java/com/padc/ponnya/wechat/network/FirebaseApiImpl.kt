@@ -250,7 +250,8 @@ object FirebaseApiImpl : FirebaseApi {
                         var userVO: UserVO = UserVO()
                         dataSnapshot.children
                             .find {
-                                it.child("userId").getValue(String::class.java) == dataSnapshot.key
+                                it.child(FIELD_USER_ID)
+                                    .getValue(String::class.java) == dataSnapshot.key
                             }
                             ?.getValue(UserVO::class.java).let {
                                 if (it != null) {
@@ -258,7 +259,7 @@ object FirebaseApiImpl : FirebaseApi {
                                 }
                             }
                         val latestMessage = dataSnapshot.children.maxByOrNull {
-                            it.child("timestamp").getValue(Long::class.java)!!
+                            it.child(FIELD_TIMESTAMP).getValue(Long::class.java)!!
                         }
                         userVO.lastMessage =
                             latestMessage?.child("message")?.getValue(String::class.java) ?: ""

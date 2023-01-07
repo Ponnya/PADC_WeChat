@@ -74,7 +74,7 @@ class ChatRoomActivity : BaseAbstractActivity(), ChatRoomView {
         binding.btnMessageSend.setOnClickListener {
             with(binding.edtChatMessage.text.toString()) {
                 if (isNotBlank()) {
-                    mPresenter.onTapSend(mReceiver, this, "", mName, mProfilePic)
+                    mPresenter.onTapSend(mReceiver, this, "")
                 }
                 binding.edtChatMessage.text = null
                 binding.edtChatMessage.hideKeyboard()
